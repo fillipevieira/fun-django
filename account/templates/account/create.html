@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Transaction</title>
+</head>
+<body>
+
+    <form method="POST">
+        {% csrf_token %} <!-- protege formulario contra ataques de ingestao de dados -->
+
+        {{ form.as_p }}
+
+        <button type="submit">Save</button>
+        {% if transaction %}
+            <a href="{% url 'delete' pk=transaction.id%}">Delete</a>
+        {% endif %}
+        <a href="{% url 'home' %}">Voltar</a>
+    </form>
+
+</body>
+</html>

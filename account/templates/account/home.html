@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+
+    <h2>Transactions</h2>
+
+    <table border="2">
+        <tr>
+            <td><b>Descricao</b></td>
+            <td><b>Data</b></td>
+            <td><b>Valor</b></td>
+            <td><b>Categoria</b></td>
+            <td><b>Options</b></td>
+        </tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.descr }}</td>
+            <td>{{ transaction.data }}</td>
+            <td>{{ transaction.value }}</td>
+            <td>{{ transaction.categoria }}</td>
+            <td><a href="{% url 'update' pk=transaction.id %}">Update</a> <a href="{% url 'delete' pk=transaction.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3><a href="{% url 'create' %}">New</a></h3>
+
+</body>
+</html>
